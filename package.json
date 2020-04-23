@@ -1,8 +1,7 @@
 {
-  "name": "@taipescripeto/basic",
-  "version": "1.0.2",
-  "description": "Some simple tools for TypeScript, it will help your daily development",
-  "main": "index.js",
+  "name": "@taipescripeto/enum-type-guard",
+  "version": "1.0.0",
+  "description": "Check if an string or number is compatible to an TypeScript enum structure",
   "scripts": {
     "build": "tsc --project tsconfig.app.json",
     "test": "karma start",
@@ -10,7 +9,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/lordazzi/taipescripeto-basic.git"
+    "url": "git+https://github.com/lordazzi/taipescripeto-enum-type-guard.git"
   },
   "publishConfig": {
     "access": "public"
@@ -19,18 +18,16 @@
     "typescript",
     "ts",
     "angular",
-    "singleton",
-    "service",
-    "kit",
+    "ng",
     "enum",
     "guard"
   ],
   "author": "Ricardo Azzi Silva",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/lordazzi/taipescripeto-basic/issues"
+    "url": "https://github.com/lordazzi/taipescripeto-enum-type-guard/issues"
   },
-  "homepage": "https://github.com/lordazzi/taipescripeto-basic#readme",
+  "homepage": "https://github.com/lordazzi/taipescripeto-enum-type-guard#readme",
   "devDependencies": {
     "@types/jasmine": "3.5.10",
     "jasmine": "3.5.0",

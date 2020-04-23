@@ -31,6 +31,16 @@ module.exports = function (config) {
     karmaTypescriptConfig: {
       tsconfig: "./tsconfig.json"
     },
+    customLaunchers: {
+      ChromeHeadless: {
+        base: 'Chrome',
+        flags: [
+          '--headless',
+          '--disable-gpu',
+          '--remote-debugging-port=9222',
+        ],
+      }
+    },
     reporters: ['progress', 'kjhtml'],
     port: 9876,
     colors: true,

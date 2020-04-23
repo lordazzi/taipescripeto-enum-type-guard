@@ -1,11 +1,11 @@
-# TypeScript basic
+# TypeScript Enum Type Guard
 Some simple tools for TypeScript, it will help your daily development
 
-> taipescripeto ferramento
+> taipescripeto custos autem enumeratio
 
-[![npm version](https://badge.fury.io/js/taipescripeto-basic.svg)](https://badge.fury.io/js/taipescripeto-basic)
-[![Build Status](https://travis-ci.org/lordazzi/taipescripeto-basic.svg?branch=master)](https://travis-ci.org/lordazzi/taipescripeto-basic)
-[![Open Source Love](https://badges.frapsoft.com/os/mit/mit.svg?v=102)](https://github.com/lordazzi/taipescripeto-basic/blob/master/LICENSE)
+[![npm version](https://badge.fury.io/js/%40taipescripeto%2Fenum-type-guard.svg)](https://badge.fury.io/js/%40taipescripeto%2Fenum-type-guard)
+[![Build Status](https://travis-ci.org/lordazzi/taipescripeto-enum-type-guard.svg?branch=master)](https://travis-ci.org/lordazzi/taipescripeto-enum-type-guard)
+[![Open Source Love](https://badges.frapsoft.com/os/mit/mit.svg?v=102)](https://github.com/lordazzi/taipescripeto-enum-type-guard/blob/master/LICENSE)
 
 ## Library Scope
 I really like to modularize my functionality in smaller libraries, but everything in this library is too small to be an independent library and I'm willing not exaggerate modularing it.
@@ -14,21 +14,69 @@ This library contain small structures to help engineering your typescript softwa
 ## Installation
 
 ```bash
-npm install @taipescripeto/basic
+npm install @taipescripeto/enum-type-guard --save
 ```
 
-## Features
- - [Singleton decorator](./FEATURE-SINGLETON.md)
- - [Enum Type Guard](./FEATURE-ENUM-TYPE-GUARD.md)
+# Usage
+A type guard is a method or keyword with power of something like cast in TypeScript.
+When a type guard is used to check the type of an information in a conditional structure, the following code assume the validated type as the information type.
 
-## Other amazing libs to add to your tools
-For TypeScript
- - [Calc js](https://www.npmjs.com/package/calc-js)
- - [Async Loop](https://www.npmjs.com/package/ecma-async-loop)
- - [Ecma Error Normalizer](https://www.npmjs.com/package/ecma-error-normalizer)
+![Type Guard example](imgs/type-guard-example.png)
 
-For Angular
- - [Ng Form Helper](https://www.npmjs.com/package/ng-form-helper)
+This feature is basically the Type Guard to identify enum data.
+
+```typescript
+import { enumTypeGuard } from '@taipescripeto/enum-type-guard';
+
+/**
+ * The application domain
+ */
+enum PokemonType {
+  FIRE = 'FIRE',
+  GRASS = 'GRASS',
+  WATER = 'WATER'
+}
+
+interface Pokemon {
+  name: string;
+  type: PokemonType;
+}
+
+/**
+ * External data collect (an api for example)
+ */
+const externalDataAboutPokemon = JSON.parse('{"name":"Charmander","type":"FIRE"}');
+
+/**
+ * Type Guard function
+ */
+function isPokemon(pokemonIGuess: unknown): pokemonIGuess is Pokemon {
+  //  If it is null or isn't an object, isn't a Pokémon model
+  if (!pokemonIGuess || !(pokemonIGuess instanceof Object)) {
+    return false;
+  }
+
+  //  ignore that
+  const someObject = pokemonIGuess as { [prop: string]: unknown };
+
+  //  the type check
+  if (
+    !(typeof someObject.name === 'string' &&
+      enumTypeGuard(someObject.type, PokemonType))
+  ) {
+    return false;
+  }
+
+  return true;
+}
+
+if (isPokemon(externalDataAboutPokemon)) {
+  externalDataAboutPokemon
+}
+```
+
+You can see in this print the TypeScript recognizing the external data as an enum:
+![Type Guard example](./imgs/enum-type-guard-working.png)
 
 ## Contributing
 
@@ -44,7 +92,7 @@ When logging a bug, please be sure to include the following:
 You can try to update the library to the last version to see if the bug has already been fixed.
 
 ### 3. Do not create a duplicate issue
-[Search the existing issues](https://github.com/lordazzi/taipescripeto-basic/search?type=Issues) before logging a new one.
+[Search the existing issues](https://github.com/lordazzi/taipescripeto-enum-type-guard/search?type=Issues) before logging a new one.
 
 Some search tips:
  * *Don't* restrict your search to only open issues. An issue with a title similar to yours may have been closed as a duplicate of one with a less-findable title.
