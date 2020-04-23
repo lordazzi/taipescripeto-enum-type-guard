@@ -7,10 +7,6 @@ Some simple tools for TypeScript, it will help your daily development
 [![Build Status](https://travis-ci.org/lordazzi/taipescripeto-enum-type-guard.svg?branch=master)](https://travis-ci.org/lordazzi/taipescripeto-enum-type-guard)
 [![Open Source Love](https://badges.frapsoft.com/os/mit/mit.svg?v=102)](https://github.com/lordazzi/taipescripeto-enum-type-guard/blob/master/LICENSE)
 
-## Library Scope
-I really like to modularize my functionality in smaller libraries, but everything in this library is too small to be an independent library and I'm willing not exaggerate modularing it.
-This library contain small structures to help engineering your typescript software, and this is this scope.
-
 ## Installation
 
 ```bash
